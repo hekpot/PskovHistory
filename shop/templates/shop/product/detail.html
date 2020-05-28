@@ -1,0 +1,27 @@
+﻿{% extends "shop/base.html" %}
+{% load static %}
+{% block title %}
+    {% if category %}{{ category.title }}{% else %}Торты{% endif %}
+{% endblock %}
+{% block content %}
+<div class="main">
+    <div class="card">
+        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static "img/no_image.png" %}{% endif %}" style="width:100%">
+        <h1>{{ product.name }}</h1>
+        <h2><a href="{{ product.category.get_absolute_url }}">{{ product.category }}</a></h2>
+        <p class="price">{{ product.price }}rub</p>
+        <form action="{% url "cart:cart_add" product.id %}" method="post">
+            {{ cart_product_form }}
+            {% csrf_token %}
+            {% if not user.is_authenticated %}
+            <div>
+            <b>Пожалуйста зарегистрируйтесь для покупок</b></div>
+            {% endif %}
+            {% if  user.is_authenticated %}
+            <input type="submit" value="Добавить">
+            {% endif %}
+        </form>
+        {{ product.description|linebreaks }}
+    </div>
+</div>
+{% endblock %}

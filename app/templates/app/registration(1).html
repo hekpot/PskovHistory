@@ -1,0 +1,21 @@
+﻿{% extends "app/layout.html" %}
+{% block content %}
+<div class="row">
+<div class="jumbotron"> 
+   <center><p style="background-color: antiquewhite; margin: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; border: groove; width: 606px">
+
+    <table>
+    <tr>
+        <td>
+    <h2>Регистрация пользователя</h2>
+    <form method="POST" > {% csrf_token %}
+    <div>
+        {{ regform.as_p}}
+        <button type="submit" class="save btn btn-default" > Зарегистрировать
+</button>
+ </div>
+ </form>
+                </td> </tr></table></p></center>
+     </div>
+    </div> 
+{% endblock %}

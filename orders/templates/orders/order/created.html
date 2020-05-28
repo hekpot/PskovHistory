@@ -1,0 +1,12 @@
+﻿{% extends "shop/base.html" %}
+
+{% block title %}Заказ подтвержден!{% endblock %}
+<div class="row">
+<div class="jumbotron"> 
+{% block content %}
+    <h1>Заказ подтвержден!</h1>
+    <p>Ваш заказ успешно внесён. номер заказа: 
+        <strong>{{ order.id }}</strong>.</p>
+         </div>
+    </div> 
+{% endblock %}
